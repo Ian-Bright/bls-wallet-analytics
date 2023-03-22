@@ -1,5 +1,3 @@
-# bls-wallet-analytics
-Analytics dashboard for BLS Wallet
 # BLS Wallet Analytics Grant
 
 * **Project:** BLS Wallet Analytics
