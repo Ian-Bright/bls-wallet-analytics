@@ -1,0 +1,6 @@
+type ExampleEntity @entity {
+  id: Bytes!
+  count: BigInt!
+  newBLSKey: [BigInt!]! # uint256[4]
+  wallet: Bytes! # address
+}

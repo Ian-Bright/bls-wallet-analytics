@@ -1,0 +1,33 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: verificationGateway
+    network: arbitrum-goerli
+    source:
+      address: "0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9"
+      abi: verificationGateway
+      startBlock: 1206451
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BLSKeySetForWallet
+        - PendingBLSKeySet
+        - WalletCreated
+        - WalletOperationProcessed
+      abis:
+        - name: verificationGateway
+          file: ./abis/verificationGateway.json
+      eventHandlers:
+        - event: BLSKeySetForWallet(uint256[4],address)
+          handler: handleBLSKeySetForWallet
+        - event: PendingBLSKeySet(bytes32,uint256[4])
+          handler: handlePendingBLSKeySet
+        - event: WalletCreated(indexed address,uint256[4])
+          handler: handleWalletCreated
+        - event: WalletOperationProcessed(indexed address,uint256,(uint256,address,bytes)[],bool,bytes[])
+          handler: handleWalletOperationProcessed
+      file: ./src/verification-gateway.ts
