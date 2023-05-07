@@ -38,8 +38,6 @@ type ProcessedTransactionEntity @entity {
 type BlsWalletStatsTSEntity @entity {
   id: ID!
   day: BigInt! #ts
-#  week: BigInt!
-#  month: BigInt!
   numWallets: BigInt!
   numOperationsFailed: BigInt!
   numOperationsSubmitted: BigInt!

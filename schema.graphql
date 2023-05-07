@@ -21,7 +21,7 @@ type WalletOperationProcessedEntity @entity {
 
 type BlsWalletStatsSumsEntity @entity {
   id: ID!
-  numWallets: BigInt!
+  numWalletsCreated: BigInt!
   numOperationsFailed: BigInt!
   numOperationsSubmitted: BigInt!
   numWalletsRecovered: BigInt!
@@ -38,9 +38,7 @@ type ProcessedTransactionEntity @entity {
 type BlsWalletStatsTSEntity @entity {
   id: ID!
   day: BigInt! #ts
-#  week: BigInt!
-#  month: BigInt!
-  numWallets: BigInt!
+  numWalletsCreated: BigInt!
   numOperationsFailed: BigInt!
   numOperationsSubmitted: BigInt!
   numWalletsRecovered: BigInt!

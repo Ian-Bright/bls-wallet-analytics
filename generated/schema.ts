@@ -286,8 +286,8 @@ export class BlsWalletStatsSumsEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get numWallets(): BigInt {
-    let value = this.get("numWallets");
+  get numWalletsCreated(): BigInt {
+    let value = this.get("numWalletsCreated");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -295,8 +295,8 @@ export class BlsWalletStatsSumsEntity extends Entity {
     }
   }
 
-  set numWallets(value: BigInt) {
-    this.set("numWallets", Value.fromBigInt(value));
+  set numWalletsCreated(value: BigInt) {
+    this.set("numWalletsCreated", Value.fromBigInt(value));
   }
 
   get numOperationsFailed(): BigInt {
@@ -485,8 +485,8 @@ export class BlsWalletStatsTSEntity extends Entity {
     this.set("day", Value.fromBigInt(value));
   }
 
-  get numWallets(): BigInt {
-    let value = this.get("numWallets");
+  get numWalletsCreated(): BigInt {
+    let value = this.get("numWalletsCreated");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -494,8 +494,8 @@ export class BlsWalletStatsTSEntity extends Entity {
     }
   }
 
-  set numWallets(value: BigInt) {
-    this.set("numWallets", Value.fromBigInt(value));
+  set numWalletsCreated(value: BigInt) {
+    this.set("numWalletsCreated", Value.fromBigInt(value));
   }
 
   get numOperationsFailed(): BigInt {
