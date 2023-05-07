@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: verificationGateway
@@ -23,15 +23,13 @@ dataSources:
         - BlsWalletStatsTS
       abis:
         - name: verificationGateway
-          file: ./abis/verificationGateway.json
+          file: verificationGateway/abis/verificationGateway.json
       eventHandlers:
         - event: BLSKeySetForWallet(uint256[4],address)
           handler: handleBLSKeySetForWallet
-        # - event: PendingBLSKeySet(bytes32,uint256[4])
-        #   handler: handlePendingBLSKeySet
         - event: WalletCreated(indexed address,uint256[4])
           handler: handleWalletCreated
-        - event: WalletOperationProcessed(indexed address,uint256,(uint256,address,bytes)[],bool,bytes[])
+        - event: WalletOperationProcessed(indexed
+            address,uint256,(uint256,address,bytes)[],bool,bytes[])
           handler: handleWalletOperationProcessed
-
-      file: ./src/verification-gateway.ts
+      file: verificationGateway/verificationGateway.wasm
