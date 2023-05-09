@@ -1,0 +1,8 @@
+{
+  "arbitrum-goerli": {
+    "verificationGateway": {
+      "address": "0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9",
+      "startBlock": 1206451
+    }
+  }
+}

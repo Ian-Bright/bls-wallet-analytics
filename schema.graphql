@@ -1,0 +1,47 @@
+
+type WalletCreatedEntity @entity {
+  id: ID!
+  wallet: Bytes! #address
+  publicKey: [BigInt!]! # uint256
+}
+
+type WalletOperationProcessedEntity @entity {
+  id: ID!
+  wallet: Bytes! #address
+  nonce: BigInt! # uint256
+  success: Boolean! #bool
+  results: [Bytes!]! 
+  actionsNonce: [BigInt!]!
+  actionsRecipients: [Bytes!]!
+  actionsData: [Bytes!]!
+  transactionHash: Bytes!
+  numActions: BigInt!
+  actionsMethodIds: [Bytes!]!
+}
+
+type BlsWalletStatsSumsEntity @entity {
+  id: ID!
+  numWalletsCreated: BigInt!
+  numOperationsFailed: BigInt!
+  numOperationsSubmitted: BigInt!
+  numWalletsRecovered: BigInt!
+  numBundlesSubmitted: BigInt!
+  numActionsSubmitted: BigInt!
+}
+
+type ProcessedTransactionEntity @entity {
+  id: ID!
+  transactionHash: Bytes!
+  numOperations: BigInt!
+}
+
+type BlsWalletStatsTSEntity @entity {
+  id: ID!
+  day: BigInt! #ts
+  numWalletsCreated: BigInt!
+  numOperationsFailed: BigInt!
+  numOperationsSubmitted: BigInt!
+  numWalletsRecovered: BigInt!
+  numBundlesSubmitted: BigInt!
+  numActionsSubmitted: BigInt!
+}

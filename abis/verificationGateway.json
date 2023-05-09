@@ -1,0 +1,448 @@
+[
+  {
+    "inputs": [
+      { "internalType": "contract IBLS", "name": "bls", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256[4]",
+        "name": "newBLSKey",
+        "type": "uint256[4]"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IWallet",
+        "name": "wallet",
+        "type": "address"
+      }
+    ],
+    "name": "BLSKeySetForWallet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "previousHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[4]",
+        "name": "newBLSKey",
+        "type": "uint256[4]"
+      }
+    ],
+    "name": "PendingBLSKeySet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[4]",
+        "name": "publicKey",
+        "type": "uint256[4]"
+      }
+    ],
+    "name": "WalletCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "uint256", "name": "ethValue", "type": "uint256" },
+          {
+            "internalType": "address",
+            "name": "contractAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes",
+            "name": "encodedFunction",
+            "type": "bytes"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct IWallet.ActionData[]",
+        "name": "actions",
+        "type": "tuple[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "success",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes[]",
+        "name": "results",
+        "type": "bytes[]"
+      }
+    ],
+    "name": "WalletOperationProcessed",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "", "type": "bytes32" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "BLSPublicKeyFromHash",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "blsLib",
+    "outputs": [
+      { "internalType": "contract IBLS", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "blsWalletLogic",
+    "outputs": [
+      { "internalType": "contract BLSWallet", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IWallet", "name": "", "type": "address" }
+    ],
+    "name": "hashFromWallet",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "hash", "type": "bytes32" },
+      { "internalType": "bytes", "name": "signature", "type": "bytes" }
+    ],
+    "name": "isValidSignature",
+    "outputs": [{ "internalType": "bool", "name": "verified", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[4]",
+        "name": "publicKey",
+        "type": "uint256[4]"
+      },
+      {
+        "components": [
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          { "internalType": "uint256", "name": "gas", "type": "uint256" },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "ethValue",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "contractAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "encodedFunction",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct IWallet.ActionData[]",
+            "name": "actions",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IWallet.Operation",
+        "name": "op",
+        "type": "tuple"
+      }
+    ],
+    "name": "measureOperationGas",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "", "type": "bytes32" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "pendingBLSPublicKeyFromHash",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "name": "pendingBLSPublicKeyTimeFromHash",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "", "type": "bytes32" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "pendingMessageSenderSignatureFromHash",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256[2]",
+            "name": "signature",
+            "type": "uint256[2]"
+          },
+          {
+            "internalType": "uint256[4][]",
+            "name": "senderPublicKeys",
+            "type": "uint256[4][]"
+          },
+          {
+            "components": [
+              { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+              { "internalType": "uint256", "name": "gas", "type": "uint256" },
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "ethValue",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "contractAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "encodedFunction",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct IWallet.ActionData[]",
+                "name": "actions",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct IWallet.Operation[]",
+            "name": "operations",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IWallet.Bundle",
+        "name": "bundle",
+        "type": "tuple"
+      }
+    ],
+    "name": "processBundle",
+    "outputs": [
+      { "internalType": "bool[]", "name": "successes", "type": "bool[]" },
+      { "internalType": "bytes[][]", "name": "results", "type": "bytes[][]" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[2]",
+        "name": "walletAddressSignature",
+        "type": "uint256[2]"
+      },
+      { "internalType": "bytes32", "name": "blsKeyHash", "type": "bytes32" },
+      { "internalType": "bytes32", "name": "salt", "type": "bytes32" },
+      {
+        "internalType": "uint256[4]",
+        "name": "newBLSKey",
+        "type": "uint256[4]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "signatureExpiryTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "recoverWallet",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[2]",
+        "name": "messageSenderSignature",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[4]",
+        "name": "publicKey",
+        "type": "uint256[4]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "signatureExpiryTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "setBLSKeyForWallet",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "signatureExpiryTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "setPendingBLSKeyForWallet",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "hash", "type": "bytes32" },
+      { "internalType": "address", "name": "blsGateway", "type": "address" }
+    ],
+    "name": "setTrustedBLSGateway",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256[2]",
+            "name": "signature",
+            "type": "uint256[2]"
+          },
+          {
+            "internalType": "uint256[4][]",
+            "name": "senderPublicKeys",
+            "type": "uint256[4][]"
+          },
+          {
+            "components": [
+              { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+              { "internalType": "uint256", "name": "gas", "type": "uint256" },
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "ethValue",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "contractAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "bytes",
+                    "name": "encodedFunction",
+                    "type": "bytes"
+                  }
+                ],
+                "internalType": "struct IWallet.ActionData[]",
+                "name": "actions",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct IWallet.Operation[]",
+            "name": "operations",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IWallet.Bundle",
+        "name": "bundle",
+        "type": "tuple"
+      }
+    ],
+    "name": "verify",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "hash", "type": "bytes32" },
+      { "internalType": "bytes", "name": "encodedFunction", "type": "bytes" }
+    ],
+    "name": "walletAdminCall",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "name": "walletFromHash",
+    "outputs": [
+      { "internalType": "contract IWallet", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "walletProxyAdmin",
+    "outputs": [
+      { "internalType": "contract ProxyAdmin", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
