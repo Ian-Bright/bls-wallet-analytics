@@ -5,7 +5,7 @@ import {
   clearStore,
   beforeAll,
   afterAll
-} from "matchstick-as/assembly/index"
+} from "matchstick-as"
 import { BigInt, Address, Bytes } from "@graphprotocol/graph-ts"
 import { ExampleEntity } from "../generated/schema"
 import { BLSKeySetForWallet } from "../generated/verificationGateway/verificationGateway"
