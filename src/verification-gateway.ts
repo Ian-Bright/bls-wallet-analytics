@@ -139,7 +139,7 @@ function updateStats(
     }
 
     // Calculate min gas for daily stats
-    if (dailyStats.minGas == BigInt.fromI32(0) || gas < dailyStats.minGas) {
+    if (dailyStats.minGas == BigInt.fromI32(0) || gas < dailyStats.minGas && gas != BigInt.fromI32(0)) {
       dailyStats.minGas = gas;
     }
     // Calculate max gas for daily stats
@@ -153,7 +153,7 @@ function updateStats(
     }
 
     // Calculate min gas for summed stats
-    if (summedStats.minGas == BigInt.fromI32(0) || gas < summedStats.minGas) {
+    if (summedStats.minGas == BigInt.fromI32(0) || gas < summedStats.minGas && gas != BigInt.fromI32(0)) {
       summedStats.minGas = gas;
     }
     // Calculate max gas for summed stats
