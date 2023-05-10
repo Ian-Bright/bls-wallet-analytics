@@ -27,6 +27,15 @@ type BlsWalletStatsSumsEntity @entity {
   numWalletsRecovered: BigInt!
   numBundlesSubmitted: BigInt!
   numActionsSubmitted: BigInt!
+  avgOperationsPerBundle: BigDecimal!
+  avgActionsPerOperation: BigDecimal!
+  avgActionsPerBundle: BigDecimal!
+  actionMethodIds: [Bytes!]!
+  actionsRecipients: [Bytes!]!
+  minGas: BigInt!
+  avgGas: BigDecimal!
+  maxGas: BigInt!
+  totalGas: BigInt!
 }
 
 type ProcessedTransactionEntity @entity {
@@ -44,4 +53,13 @@ type BlsWalletStatsTSEntity @entity {
   numWalletsRecovered: BigInt!
   numBundlesSubmitted: BigInt!
   numActionsSubmitted: BigInt!
+  avgOperationsPerBundle: BigDecimal!
+  avgActionsPerOperation: BigDecimal!
+  avgActionsPerBundle: BigDecimal!
+  actionMethodIds: [Bytes!]!
+  actionsRecipients: [Bytes!]!
+  minGas: BigInt!
+  avgGas: BigDecimal!
+  maxGas: BigInt!
+  totalGas: BigInt!
 }

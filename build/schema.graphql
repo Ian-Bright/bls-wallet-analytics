@@ -21,12 +21,21 @@ type WalletOperationProcessedEntity @entity {
 
 type BlsWalletStatsSumsEntity @entity {
   id: ID!
-  numWallets: BigInt!
+  numWalletsCreated: BigInt!
   numOperationsFailed: BigInt!
   numOperationsSubmitted: BigInt!
   numWalletsRecovered: BigInt!
   numBundlesSubmitted: BigInt!
   numActionsSubmitted: BigInt!
+  avgOperationsPerBundle: BigDecimal!
+  avgActionsPerOperation: BigDecimal!
+  avgActionsPerBundle: BigDecimal!
+  actionMethodIds: [Bytes!]!
+  actionsRecipients: [Bytes!]!
+  minGas: BigInt!
+  avgGas: BigDecimal!
+  maxGas: BigInt!
+  totalGas: BigInt!
 }
 
 type ProcessedTransactionEntity @entity {
@@ -38,10 +47,19 @@ type ProcessedTransactionEntity @entity {
 type BlsWalletStatsTSEntity @entity {
   id: ID!
   day: BigInt! #ts
-  numWallets: BigInt!
+  numWalletsCreated: BigInt!
   numOperationsFailed: BigInt!
   numOperationsSubmitted: BigInt!
   numWalletsRecovered: BigInt!
   numBundlesSubmitted: BigInt!
   numActionsSubmitted: BigInt!
+  avgOperationsPerBundle: BigDecimal!
+  avgActionsPerOperation: BigDecimal!
+  avgActionsPerBundle: BigDecimal!
+  actionMethodIds: [Bytes!]!
+  actionsRecipients: [Bytes!]!
+  minGas: BigInt!
+  avgGas: BigDecimal!
+  maxGas: BigInt!
+  totalGas: BigInt!
 }
