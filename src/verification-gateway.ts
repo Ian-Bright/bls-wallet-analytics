@@ -1,4 +1,4 @@
-import { BigInt, Bytes, BigDecimal, log } from "@graphprotocol/graph-ts"
+import { BigInt, Bytes, BigDecimal, log, bigInt } from "@graphprotocol/graph-ts"
 import {
   BLSKeySetForWallet,
   WalletCreated,
@@ -226,6 +226,8 @@ export function handleWalletOperationProcessed(
     updateStats(event.block.timestamp, BigInt.fromI32(0), BigInt.fromI32(0), BigInt.fromI32(1), BigInt.fromI32(0), BigInt.fromI32(0), BigInt.fromI32(0), [], [], BigInt.fromI32(0));
   }
 
+  let gas: BigInt;  // Declare the gas variable here
+
   // Check if the transaction has already been processed
   let processedTransaction = ProcessedTransactionEntity.load(id);
   if (processedTransaction == null) {
@@ -235,7 +237,11 @@ export function handleWalletOperationProcessed(
     newProcessedTransaction.numOperations = BigInt.fromI32(1);
     newProcessedTransaction.save();
 
-    let gas = event.transaction.gasPrice.times(event.transaction.gasLimit);
+    if (event.receipt != null) {
+      gas = event.receipt!.gasUsed;
+    } else {
+      gas = BigInt.fromI32(0)
+    }
     
     // Increment numBundlesSubmitted by 1 for the ts data
     updateStats(event.block.timestamp, BigInt.fromI32(0), BigInt.fromI32(0), BigInt.fromI32(0), BigInt.fromI32(0), BigInt.fromI32(1), BigInt.fromI32(0), [], [], gas);

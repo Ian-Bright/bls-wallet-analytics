@@ -33,5 +33,6 @@ dataSources:
           handler: handleWalletCreated
         - event: WalletOperationProcessed(indexed address,uint256,(uint256,address,bytes)[],bool,bytes[])
           handler: handleWalletOperationProcessed
+          receipt: true
 
       file: ./src/verification-gateway.ts
