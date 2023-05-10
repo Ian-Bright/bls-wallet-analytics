@@ -363,6 +363,123 @@ export class BlsWalletStatsSumsEntity extends Entity {
   set numActionsSubmitted(value: BigInt) {
     this.set("numActionsSubmitted", Value.fromBigInt(value));
   }
+
+  get avgOperationsPerBundle(): BigDecimal {
+    let value = this.get("avgOperationsPerBundle");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgOperationsPerBundle(value: BigDecimal) {
+    this.set("avgOperationsPerBundle", Value.fromBigDecimal(value));
+  }
+
+  get avgActionsPerOperation(): BigDecimal {
+    let value = this.get("avgActionsPerOperation");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgActionsPerOperation(value: BigDecimal) {
+    this.set("avgActionsPerOperation", Value.fromBigDecimal(value));
+  }
+
+  get avgActionsPerBundle(): BigDecimal {
+    let value = this.get("avgActionsPerBundle");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgActionsPerBundle(value: BigDecimal) {
+    this.set("avgActionsPerBundle", Value.fromBigDecimal(value));
+  }
+
+  get actionMethodIds(): Array<Bytes> {
+    let value = this.get("actionMethodIds");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set actionMethodIds(value: Array<Bytes>) {
+    this.set("actionMethodIds", Value.fromBytesArray(value));
+  }
+
+  get actionsRecipients(): Array<Bytes> {
+    let value = this.get("actionsRecipients");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set actionsRecipients(value: Array<Bytes>) {
+    this.set("actionsRecipients", Value.fromBytesArray(value));
+  }
+
+  get minGas(): BigInt {
+    let value = this.get("minGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set minGas(value: BigInt) {
+    this.set("minGas", Value.fromBigInt(value));
+  }
+
+  get avgGas(): BigDecimal {
+    let value = this.get("avgGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgGas(value: BigDecimal) {
+    this.set("avgGas", Value.fromBigDecimal(value));
+  }
+
+  get maxGas(): BigInt {
+    let value = this.get("maxGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set maxGas(value: BigInt) {
+    this.set("maxGas", Value.fromBigInt(value));
+  }
+
+  get totalGas(): BigInt {
+    let value = this.get("totalGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set totalGas(value: BigInt) {
+    this.set("totalGas", Value.fromBigInt(value));
+  }
 }
 
 export class ProcessedTransactionEntity extends Entity {
@@ -561,5 +678,122 @@ export class BlsWalletStatsTSEntity extends Entity {
 
   set numActionsSubmitted(value: BigInt) {
     this.set("numActionsSubmitted", Value.fromBigInt(value));
+  }
+
+  get avgOperationsPerBundle(): BigDecimal {
+    let value = this.get("avgOperationsPerBundle");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgOperationsPerBundle(value: BigDecimal) {
+    this.set("avgOperationsPerBundle", Value.fromBigDecimal(value));
+  }
+
+  get avgActionsPerOperation(): BigDecimal {
+    let value = this.get("avgActionsPerOperation");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgActionsPerOperation(value: BigDecimal) {
+    this.set("avgActionsPerOperation", Value.fromBigDecimal(value));
+  }
+
+  get avgActionsPerBundle(): BigDecimal {
+    let value = this.get("avgActionsPerBundle");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgActionsPerBundle(value: BigDecimal) {
+    this.set("avgActionsPerBundle", Value.fromBigDecimal(value));
+  }
+
+  get actionMethodIds(): Array<Bytes> {
+    let value = this.get("actionMethodIds");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set actionMethodIds(value: Array<Bytes>) {
+    this.set("actionMethodIds", Value.fromBytesArray(value));
+  }
+
+  get actionsRecipients(): Array<Bytes> {
+    let value = this.get("actionsRecipients");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set actionsRecipients(value: Array<Bytes>) {
+    this.set("actionsRecipients", Value.fromBytesArray(value));
+  }
+
+  get minGas(): BigInt {
+    let value = this.get("minGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set minGas(value: BigInt) {
+    this.set("minGas", Value.fromBigInt(value));
+  }
+
+  get avgGas(): BigDecimal {
+    let value = this.get("avgGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set avgGas(value: BigDecimal) {
+    this.set("avgGas", Value.fromBigDecimal(value));
+  }
+
+  get maxGas(): BigInt {
+    let value = this.get("maxGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set maxGas(value: BigInt) {
+    this.set("maxGas", Value.fromBigInt(value));
+  }
+
+  get totalGas(): BigInt {
+    let value = this.get("totalGas");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set totalGas(value: BigInt) {
+    this.set("totalGas", Value.fromBigInt(value));
   }
 }
