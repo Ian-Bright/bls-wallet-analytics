@@ -34,3 +34,35 @@ dataSources:
           handler: handleWalletOperationProcessed
           receipt: true
       file: verificationGateway/verificationGateway.wasm
+  - kind: ethereum
+    name: verificationGateway_new
+    network: arbitrum-goerli
+    source:
+      address: "0x84e09390992F481E98eeb100bA4f19910c145Ede"
+      abi: verificationGateway
+      startBlock: 17602348
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BLSKeySetForWallet
+        - PendingBLSKeySet
+        - WalletCreated
+        - WalletOperationProcessed
+        - BlsWalletStatsSums
+        - ProcessedTransaction
+        - BlsWalletStatsTS
+      abis:
+        - name: verificationGateway
+          file: verificationGateway_new/abis/verificationGateway.json
+      eventHandlers:
+        - event: BLSKeySetForWallet(uint256[4],address)
+          handler: handleBLSKeySetForWallet
+        - event: WalletCreated(indexed address,uint256[4])
+          handler: handleWalletCreated
+        - event: WalletOperationProcessed(indexed
+            address,uint256,(uint256,address,bytes)[],bool,bytes[])
+          handler: handleWalletOperationProcessed
+          receipt: true
+      file: verificationGateway/verificationGateway.wasm
