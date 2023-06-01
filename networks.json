@@ -3,6 +3,10 @@
     "verificationGateway": {
       "address": "0xae7DF242c589D479A5cF8fEA681736e0E0Bb1FB9",
       "startBlock": 1206451
+    },
+        "verificationGateway_new": {
+      "address": "0x84e09390992F481E98eeb100bA4f19910c145Ede",
+      "startBlock": 17602348
     }
   }
 }
